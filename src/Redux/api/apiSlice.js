@@ -2,12 +2,15 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const todosApi = createApi({
   reducerPath: "todosApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3600" }),
-  tagTypes: ["todo"],
+  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3500" }),
+  tagTypes: ["todos"],
   endpoints: (builder) => ({
     getAllTodo: builder.query({
       query: () => "/todos",
-      transformResponse: (res) => res.sort((a, b) => b.id - a.id),
+      // this confuse shit it how to sort a array in acending order by id
+      transformResponse: (res) => res.sort((a, b) => (a.id > b.id ? -1 : 1)),
+      //more clean way to do the same sort
+      // transformResponse: (res) =>  res.sort((a, b) => b.id - a.id ),
       providesTags: ["todo"],
     }),
     addNewTodo: builder.mutation({

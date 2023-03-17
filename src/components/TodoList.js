@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 import {
   useGetAllTodoQuery,
@@ -23,7 +21,7 @@ const TodoList = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     addTodo({
-      userid: 8,
+      userid: 1,
       id: Number(nanoid),
       title: newTodo,
       completed: false,
@@ -33,7 +31,7 @@ const TodoList = () => {
 
   return (
     <main id="animeLeft">
-      <h1>Todo List</h1>
+      <h1>Things i have todo list</h1>
       {isLoading ? (
         <div id="loading"></div>
       ) : isSuccess ? (
